@@ -1,0 +1,17 @@
+### Source Code Standards
+
+Formatting can be done simply by using clang-format, with the vscode extension. Make sure it is both installed on the system and in vscode.
+
+C source and header files can use this template, and doxygen comments:
+https://github.com/EmbeddedArea/c_files_template/blob/main/template.c
+https://gist.github.com/peisenhower/7da11d8daec28fbd54d3
+https://www.doxygen.nl/manual/docblocks.html
+
+
+### Notes
+- Install platformio on vscode
+- open the "open_car_diagnostics_esp32" folder as a project with platformio
+- run build, upload, and monitor
+- connect to the wifi AP using the credentials set in wifi.c
+- connect as udp client to the esp32 with: `nc -u 192.168.4.1 8888` (change out the ip and port if they change)
+- you should be able to type text and hit enter, and see it received on the esp32 monitor.
