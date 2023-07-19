@@ -19,6 +19,7 @@
 #include "udp_server.h"
 #include "wifi.h"
 #include <string.h>
+#include "esp_websocket_client.h"
 
 /************************************
  * STATIC VARIABLES AND DEFINES
@@ -47,4 +48,8 @@ void app_main(void) {
    // Initialize UDP Server
    ESP_LOGI(TAG, "STARTING UDP SERVER");
    xTaskCreate(udp_server_task, "udp_server", 4096, NULL, 5, NULL);
+
+    // Start mDNS Service
+    ESP_LOGI(TAG, "STARTING mDNS SERVICE");
+    start_mdns_service();
 }

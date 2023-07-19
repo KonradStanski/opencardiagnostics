@@ -12,17 +12,19 @@
 #include "esp_log.h"
 #include "esp_mac.h"
 #include "esp_wifi.h"
+#include "mdns.h"
 #include <string.h>
 
 /************************************
  * STATIC VARIABLES AND DEFINES
  ************************************/
-#define EXAMPLE_ESP_WIFI_SSID "OpenCarDiagnostics_V0.1"
+#define EXAMPLE_ESP_WIFI_SSID "OpenCarDiagnostics"
 #define EXAMPLE_ESP_WIFI_PASS "PASSWORD"
 #define EXAMPLE_ESP_WIFI_CHANNEL 0
 #define EXAMPLE_MAX_STA_CONN 1
 
 static const char* TAG = "WIFI_SOFTAP";
+static const char* MDNS_INSTANCE = "Open Car Diagnostics ";
 
 /************************************
  * STATIC FUNCTIONS
@@ -81,4 +83,21 @@ void wifi_init_softap(void) {
             EXAMPLE_ESP_WIFI_SSID,
             EXAMPLE_ESP_WIFI_PASS,
             EXAMPLE_ESP_WIFI_CHANNEL);
+}
+
+/**
+ * @brief function to start mDNS service
+ */
+void start_mdns_service() {
+   //initialize mDNS service
+   esp_err_t err = mdns_init();
+   if(err) {
+      printf("MDNS Init failed: %d\n", err);
+      return;
+   }
+
+   //set hostname
+   mdns_hostname_set("ocd-esp32");
+   //set default instance
+   mdns_instance_name_set(MDNS_INSTANCE);
 }

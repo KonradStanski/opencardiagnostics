@@ -12,3 +12,8 @@
  * @brief function to initialize WiFi in softAP mode
  */
 void wifi_init_softap(void);
+
+/**
+ * @brief function to start mDNS service
+ */
+void start_mdns_service();
