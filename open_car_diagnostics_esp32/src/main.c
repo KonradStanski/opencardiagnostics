@@ -19,7 +19,7 @@
 #include "udp_server.h"
 #include "wifi.h"
 #include <string.h>
-#include "esp_websocket_client.h"
+// #include "esp_websocket_client.h"
 
 /************************************
  * STATIC VARIABLES AND DEFINES
