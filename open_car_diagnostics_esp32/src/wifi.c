@@ -97,7 +97,7 @@ void start_mdns_service() {
    }
 
    //set hostname
-   mdns_hostname_set("ocd-esp32");
+   mdns_hostname_set("ocd-device");
    //set default instance
    mdns_instance_name_set(MDNS_INSTANCE);
 }

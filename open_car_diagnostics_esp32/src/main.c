@@ -16,10 +16,10 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "nvs_flash.h"
-#include "udp_server.h"
+#include "websocket_server.h"
 #include "wifi.h"
+#include <esp_wifi.h>
 #include <string.h>
-// #include "esp_websocket_client.h"
 
 /************************************
  * STATIC VARIABLES AND DEFINES
@@ -45,11 +45,10 @@ void app_main(void) {
    ESP_LOGI(TAG, "STARTING WIFI");
    wifi_init_softap();
 
-   // Initialize UDP Server
-   ESP_LOGI(TAG, "STARTING UDP SERVER");
-   xTaskCreate(udp_server_task, "udp_server", 4096, NULL, 5, NULL);
+   // Start mDNS Service
+   ESP_LOGI(TAG, "STARTING mDNS SERVICE");
+   start_mdns_service();
 
-    // Start mDNS Service
-    ESP_LOGI(TAG, "STARTING mDNS SERVICE");
-    start_mdns_service();
+   // setup websocket server
+   init_websocket_server();
 }

@@ -13,5 +13,5 @@ https://www.doxygen.nl/manual/docblocks.html
 - open the "open_car_diagnostics_esp32" folder as a project with platformio
 - run build, upload, and monitor
 - connect to the wifi AP using the credentials set in wifi.c
-- connect as udp client to the esp32 with: `nc -u 192.168.4.1 8888` (change out the ip and port if they change)
-- you should be able to type text and hit enter, and see it received on the esp32 monitor.
+- install wscat with `npm install -g wscat`
+- connect ws client with: `wscat -c ws://ocd-device.local:80/ws`
